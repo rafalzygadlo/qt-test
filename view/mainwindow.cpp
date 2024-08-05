@@ -6,26 +6,42 @@
 mainWindow::mainWindow()
 {
 
-    QVBoxLayout *vBoxLayout = new QVBoxLayout(this);
 
     QWidget *window = new QWidget(this);
-    window->setLayout(vBoxLayout);
+    QVBoxLayout *vBox = new QVBoxLayout(window);
+
+    //table view
+    QTableView *tableView = new QTableView(window);
+    tableView->setModel(new Model);
+
+    vBox->addWidget(tableView, Qt::AlignCenter);
+
+    //buttons
+    QHBoxLayout *hBox = new QHBoxLayout(window);
+    hBox->addStretch(1);
+
+    QPushButton *b1 = new QPushButton(tr("Ok") );
+    hBox->addWidget(b1,0, Qt::AlignRight);
+
+    QPushButton *b2 = new QPushButton(tr("Cancel"));
+    hBox->addWidget(b2, 0, Qt::AlignRight);
 
 
-    vBoxLayout->addWidget(createTableView(), Qt::AlignCenter);
 
-    QHBoxLayout *HBoxLayout = new QHBoxLayout(this);
-    HBoxLayout->addStretch(1);
+    //buttons
+    QHBoxLayout *hBox1 = new QHBoxLayout(window);
 
-    QPushButton *b1 = new QPushButton(tr("Ok"), this);
-    HBoxLayout->addWidget(b1,0, Qt::AlignRight);
+    QPushButton *b11 = new QPushButton(tr("Ok1") );
+    hBox1->addWidget(b11,0, Qt::AlignRight);
 
-    QPushButton *b2 = new QPushButton(tr("Cancel"), this);
-    HBoxLayout->addWidget(b2, 0, Qt::AlignRight);
+    QPushButton *b12 = new QPushButton(tr("Cancel1"));
+    hBox1->addWidget(b12, 0, Qt::AlignRight);
+    hBox1->addStretch(1);
 
 
+    vBox->addLayout(hBox);
+    vBox->addLayout(hBox1);
 
-    vBoxLayout->addLayout(HBoxLayout);
 
     createMenuBar();
 
@@ -40,10 +56,9 @@ mainWindow::mainWindow()
 
 QTableView *mainWindow::createTableView()
 {
-    QTableView *tableView = new QTableView(this);
-    tableView->setModel(new Model);
 
-    return tableView;
+
+    return nullptr;
 }
 
 
