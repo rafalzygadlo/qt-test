@@ -17,7 +17,7 @@ mainWindow::mainWindow()
     vBox->addWidget(tableView, Qt::AlignCenter);
 
     //buttons
-    QHBoxLayout *hBox = new QHBoxLayout(window);
+    QHBoxLayout *hBox = new QHBoxLayout;
     hBox->addStretch(1);
 
     QPushButton *b1 = new QPushButton(tr("Ok") );
@@ -27,12 +27,12 @@ mainWindow::mainWindow()
     hBox->addWidget(b2, 0, Qt::AlignRight);
 
 
-
-    //buttons
-    QHBoxLayout *hBox1 = new QHBoxLayout(window);
+    //buttons1
+    QHBoxLayout *hBox1 = new QHBoxLayout;
 
     QPushButton *b11 = new QPushButton(tr("Ok1") );
     hBox1->addWidget(b11,0, Qt::AlignRight);
+
 
     QPushButton *b12 = new QPushButton(tr("Cancel1"));
     hBox1->addWidget(b12, 0, Qt::AlignRight);
@@ -50,14 +50,8 @@ mainWindow::mainWindow()
 
 }
 
-
-
-
-
 QTableView *mainWindow::createTableView()
 {
-
-
     return nullptr;
 }
 
