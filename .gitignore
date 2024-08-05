@@ -1,3 +1,5 @@
 # Build results
 build/
-
+Makefile
+Makefile.Debug
+Makefile.Release
