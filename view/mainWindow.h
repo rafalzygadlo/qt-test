@@ -9,6 +9,7 @@ class mainWindow : public QMainWindow
 
 public:
     mainWindow();
+    int initdb();
 
 private:
     void createMenuBar();

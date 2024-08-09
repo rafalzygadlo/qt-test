@@ -1,7 +1,6 @@
 #include "mainwindow.h"
-#include "model/model.h"
+#include "model/basemodel.h"
 #include <QTableView>
-
 
 mainWindow::mainWindow()
 {
@@ -10,11 +9,17 @@ mainWindow::mainWindow()
     QWidget *window = new QWidget(this);
     QVBoxLayout *vBox = new QVBoxLayout(window);
 
+
+    //top buttons
+    QHBoxLayout *hTop = new QHBoxLayout;
+    QPushButton *bNew = new QPushButton(tr("New") );
+    hTop->addWidget(bNew,0, Qt::AlignLeft);
+
+
     //table view
     QTableView *tableView = new QTableView(window);
-    tableView->setModel(new Model);
+    tableView->setModel(new baseModel);
 
-    vBox->addWidget(tableView, Qt::AlignCenter);
 
     //buttons
     QHBoxLayout *hBox = new QHBoxLayout;
@@ -28,19 +33,10 @@ mainWindow::mainWindow()
 
 
     //buttons1
-    QHBoxLayout *hBox1 = new QHBoxLayout;
 
-    QPushButton *b11 = new QPushButton(tr("Ok1") );
-    hBox1->addWidget(b11,0, Qt::AlignRight);
-
-
-    QPushButton *b12 = new QPushButton(tr("Cancel1"));
-    hBox1->addWidget(b12, 0, Qt::AlignRight);
-    hBox1->addStretch(1);
-
-
+    vBox->addLayout(hTop);
+    vBox->addWidget(tableView, Qt::AlignCenter);
     vBox->addLayout(hBox);
-    vBox->addLayout(hBox1);
 
 
     createMenuBar();
@@ -49,12 +45,6 @@ mainWindow::mainWindow()
     setCentralWidget(window); // create the central widget for the window
 
 }
-
-QTableView *mainWindow::createTableView()
-{
-    return nullptr;
-}
-
 
 void mainWindow::createMenuBar()
 {
