@@ -1,12 +1,15 @@
 #include <QApplication>
-#include "view/mainwindow.h"
+#include "view/main/mainView.h"
+#include "../view/login/loginView.h"
 #include "db.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    qDebug() << QSqlDatabase::drivers();
+    a.setStyle("windows");
+
+    //qDebug() << QSqlDatabase::drivers();
 
     if (!QSqlDatabase::drivers().contains("QSQLITE"))
         QMessageBox::critical(nullptr, "Unable to load database", "This demo needs the SQLITE driver");
@@ -20,9 +23,14 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    loginView m_loginView;
 
-    mainWindow m_window;
-    m_window.show();
+    if (m_loginView.exec() == QDialog::Accepted) 
+    {
+        mainView m_window;
+        m_window.show();
+        return a.exec();
+    }
 
-    return a.exec();
+    return 1;
 }

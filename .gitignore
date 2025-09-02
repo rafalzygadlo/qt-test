@@ -1,7 +1,9 @@
 # Build results
-build/
-debug/
-release/
+.qt/
+bin/
+CMakeFiles/
+MyQtApp_autogen/
+CMakeCache.txt
 Makefile
 Makefile.Debug
 Makefile.Release

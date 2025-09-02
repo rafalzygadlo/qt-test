@@ -1,4 +1,4 @@
-#include "model/basemodel.h"
+#include "basemodel.h"
 
 baseModel::baseModel()
     : QSqlRelationalTableModel()

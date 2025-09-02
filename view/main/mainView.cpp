@@ -1,8 +1,8 @@
-#include "mainwindow.h"
-#include "model/basemodel.h"
+#include "../view/main/mainView.h"
+#include "../model/baseModel.h"
 #include <QTableView>
 
-mainWindow::mainWindow()
+mainView::mainView()
 {
 
 
@@ -15,11 +15,9 @@ mainWindow::mainWindow()
     QPushButton *bNew = new QPushButton(tr("New") );
     hTop->addWidget(bNew,0, Qt::AlignLeft);
 
-
     //table view
     QTableView *tableView = new QTableView(window);
     tableView->setModel(new baseModel);
-
 
     //buttons
     QHBoxLayout *hBox = new QHBoxLayout;
@@ -33,7 +31,6 @@ mainWindow::mainWindow()
 
 
     //buttons1
-
     vBox->addLayout(hTop);
     vBox->addWidget(tableView, Qt::AlignCenter);
     vBox->addLayout(hBox);
@@ -46,7 +43,7 @@ mainWindow::mainWindow()
 
 }
 
-void mainWindow::createMenuBar()
+void mainView::createMenuBar()
 {
     QAction *quitAction = new QAction(tr("&Quit"), this);
     QAction *aboutAction = new QAction(tr("&About"), this);
